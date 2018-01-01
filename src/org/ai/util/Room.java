@@ -5,12 +5,11 @@ public class Room {
 	private boolean haveProjector, isAvailible;
 	private Time freeTime; // the time when room will be free to use
 
-	public int getRoomNo() {
-		return roomNo;
-	}
-
-	public void setRoomNo(int roomNo) {
-		this.roomNo = roomNo;
+	public Room() {
+		roomNo = 0;
+		haveProjector = false;
+		isAvailible = true;
+		freeTime = new Time();
 	}
 
 	public Room(int roomNo, boolean haveProjector, boolean isAvailible, Time freeTime) {
@@ -19,6 +18,14 @@ public class Room {
 		this.haveProjector = haveProjector;
 		this.isAvailible = isAvailible;
 		this.freeTime = freeTime;
+	}
+
+	public int getRoomNo() {
+		return roomNo;
+	}
+
+	public void setRoomNo(int roomNo) {
+		this.roomNo = roomNo;
 	}
 
 	public boolean isHaveProjector() {
