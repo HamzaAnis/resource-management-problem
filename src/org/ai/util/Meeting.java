@@ -83,5 +83,6 @@ public class Meeting {
 
 	public void setRoomAllocated(boolean roomAllocated) {
 		this.roomAllocated = roomAllocated;
-	
+
+	}
 }

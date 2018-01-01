@@ -1,3 +1,4 @@
+package org.ai.core;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -15,6 +16,10 @@ public class Office {
 	ArrayList<Room> RWOP; // roomsWithoutProjector
 	ArrayList<Meeting> MWP; // meetings with projectors
 	ArrayList<Meeting> MWOP; // meetings without projectors
+
+	public Office() {
+
+	}
 
 	public Office(OfficeTimings officeTimings, int numberofMeetings, int nORWP, int nORWOP, ArrayList<Meeting> meetings,
 			ArrayList<Room> rWP, ArrayList<Room> rWOP, ArrayList<Meeting> mWP, ArrayList<Meeting> mWOP) {
@@ -152,6 +157,43 @@ public class Office {
 			meetings.add(M_temp);
 		}
 		sc.close();
+	}
+
+	public void displaySchedualing() {
+		if (NORWP > 0 && MWP.size() > 0) {
+			System.out.println("***************************\n");
+			System.out.println("* Meetings with projector *\n");
+			System.out.println("***************************\n\n");
+
+			for (int i = 0; i < MWP.size(); i++) {
+				System.out.println("Meeting" + i + 1 + ":");
+				System.out.println("              Name: " + MWP.get(i).getName());
+				System.out.println("               Day: " + MWP.get(i).getDay());
+				System.out.println("              Time: " + MWP.get(i).getTime().getHour() + ":"
+						+ MWP.get(i).getTime().getMinute() + " " + MWP.get(i).getTime().getArr());
+				System.out.println("          Duration: " + MWP.get(i).getDuration().gethour() + ":"
+						+ MWP.get(i).getDuration().getminute());
+				System.out.println("       Room Number: " + MWP.get(i).getRoom().getRoomNo());
+
+			}
+		}
+
+		if (NORWOP > 0 && MWOP.size() > 0) {
+			System.out.println("******************************");
+			System.out.println("* Meetings without projector *");
+			System.out.println("******************************\n");
+
+			for (int i = 0; i < MWOP.size(); i++) {
+				System.out.println("Meeting" + i + 1 + ":\n");
+				System.out.println("              Name: " + MWOP.get(i).getName());
+				System.out.println("               Day: " + MWOP.get(i).getDay());
+				System.out.println("              Time: " + MWOP.get(i).getTime().getHour() + ":"
+						+ MWOP.get(i).getTime().getMinute() + " " + MWOP.get(i).getTime().getArr());
+				System.out.println("          Duration: " + MWOP.get(i).getDuration().gethour() + ":"
+						+ MWOP.get(i).getDuration().getminute());
+				System.out.println("       Room Number: " + MWOP.get(i).getRoom().getRoomNo());
+			}
+		}
 	}
 
 	public void setOfficeTimings(OfficeTimings officeTimings) {
