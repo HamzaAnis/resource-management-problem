@@ -1,4 +1,4 @@
-package org.ai.scheduling;
+package org.ai.util;
 
 import java.util.Scanner;
 
@@ -33,6 +33,7 @@ public class Duration {
 				System.out.println("\t\tPlease Enter a valid Duration");
 			}
 		}
+		sc.close();
 	}
 	
 	public Duration increment() {

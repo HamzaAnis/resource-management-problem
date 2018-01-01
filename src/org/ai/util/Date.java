@@ -1,4 +1,4 @@
-package org.ai.scheduling;
+package org.ai.util;
 
 import java.util.Scanner;
 
@@ -41,6 +41,7 @@ public class Date {
 				System.out.println("\t\tInvalid Format");
 			}
 		}
+		sc.close();
 	}
 
 	public int getDay() {

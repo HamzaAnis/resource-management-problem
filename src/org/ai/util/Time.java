@@ -1,4 +1,4 @@
-package org.ai.scheduling;
+package org.ai.util;
 
 import java.util.Scanner;
 
@@ -94,6 +94,7 @@ public class Time {
 				System.out.println("\t\tPlease Enter a valid Time");
 			}
 		}
+		sc.close();
 	}
 
 	public boolean checkEqual(Time rhs) {

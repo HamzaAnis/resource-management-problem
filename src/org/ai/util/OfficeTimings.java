@@ -1,4 +1,4 @@
-package org.ai.scheduling;
+package org.ai.util;
 
 public class OfficeTimings {
 
