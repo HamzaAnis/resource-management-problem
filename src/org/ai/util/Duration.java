@@ -6,6 +6,10 @@ public class Duration {
 	private int hour;
 	private int minute;
 
+	Duration() {
+		hour = minute = 0;
+	}
+
 	public Duration(int hour, int minute) {
 		super();
 		this.hour = hour;
@@ -35,7 +39,7 @@ public class Duration {
 		}
 		sc.close();
 	}
-	
+
 	public Duration increment() {
 		this.hour++;
 		return this;

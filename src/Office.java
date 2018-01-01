@@ -100,6 +100,60 @@ public class Office {
 			RWOP.get(i).setFreeTime(officeTimings.getOpening());
 	}
 
+	public void setOfficeTimings() {
+		System.out.println("Please enter the following information for Office Timings:\n\n");
+		officeTimings.getOpening().setTime("   Opening Time (HH:MM am/pm): ");
+		officeTimings.getClosing().setTime("   Closing Time (HH:MM am/pm): ");
+		officeTimings.setWorkingDays(TakeIntInput("       Working days in a week: "));
+		officeTimings.getWorkingTime().setDuration("Working time in a day (HH:MM): ");
+	}
+
+	public void displayofficeTimings() {
+		officeTimings.getOpening().displayTime("Opening Time: ");
+		officeTimings.getClosing().displayTime("Closing Time: ");
+	}
+
+	public void displaMeetings() {
+		for (int i = 0; i < numberofMeetings; i++) {
+			System.out.println("Meeting " + i);
+			System.out.println(meetings.get(i).getDuration().getminute());
+		}
+	}
+
+	public void setMeetings() {
+
+		Meeting M_temp = new Meeting();
+
+		String temp = "";
+		Scanner sc = new Scanner(System.in);
+
+		for (int i = 0; i < numberofMeetings; i++) {
+			System.out.println("\t\tPlease Enter following Information for Meeting " + (i + 1) + "!");
+			System.out.println("                       Name: ");
+			M_temp.setName(sc.nextLine());
+			M_temp.getDuration().setDuration("Duration of Meeting (HH:MM): ");
+
+			while (true) {
+				System.out.println("   Projector required (Y/N): ");
+
+				temp = sc.nextLine();
+
+				if (temp.equals('Y') || temp.equals('N'))
+					break;
+				else
+					System.out.println("\t\tWrong Input!!!\n");
+			}
+			if (temp.equals("Y")) {
+				M_temp.setNeedProjector(true);
+			} else {
+				M_temp.setNeedProjector(false);
+			}
+
+			meetings.add(M_temp);
+		}
+		sc.close();
+	}
+
 	public void setOfficeTimings(OfficeTimings officeTimings) {
 		this.officeTimings = officeTimings;
 	}

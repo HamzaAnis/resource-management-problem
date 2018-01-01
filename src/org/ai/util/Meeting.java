@@ -8,6 +8,15 @@ public class Meeting {
 	private Room room;
 	private boolean needProjector, roomAllocated;
 
+	public Meeting() {
+		duration = new Duration();
+		time = new Time();
+		name = "";
+		day = 0;
+		room = new Room();
+		needProjector = roomAllocated = false;
+	}
+
 	public Meeting(Duration duration, Time time, String name, int day, Room room, boolean needProjector,
 			boolean roomAllocated) {
 		super();
@@ -74,10 +83,5 @@ public class Meeting {
 
 	public void setRoomAllocated(boolean roomAllocated) {
 		this.roomAllocated = roomAllocated;
-	}
-
-	Meeting() {
-		day = 0;
-		roomAllocated = false;
-	}
+	
 }
