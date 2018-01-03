@@ -25,6 +25,38 @@ public class BackTracking {
 		int day = 1;
 		Time time = office.getOfficeTimings().getOpening();
 
+		// ****************************
+		// * Meetings with projectors *
+		// ****************************
+
+		if (office.getRWP().size() > 0) {
+			for (int i = 0; i < office.getMWP().size(); i++)
+				sum += office.getMWP().get(i).getDuration().getminute();
+
+			if (sum >= office.getOfficeTimings().getWorkingTime().getminute()) {
+				B_MCWP(office, 0);
+
+				combinations = removeRepetitions(combinations);
+
+				for (int k = 0; k < combinations.size(); k++, roomIndex++) {
+					if (roomIndex >= office.getRWP().size())
+						roomIndex = 0;
+					day++;
+					office.FreeAllRooms();
+
+					for (int l = 0; l < combinations.get(k).size(); l++) {
+						office.getMWP().get(combinations.get(k).get(l)).setRoomAllocated(true);
+						office.getMWP().get(combinations.get(k).get(l)).setRoom(office.getRWP().get(roomIndex));
+
+						office.getMWP().get(combinations.get(k).get(l))
+								.setTime(office.getRWP().get(roomIndex).getFreeTime());
+						office.getRWP().get(roomIndex).setFreeTime(office.getRWP().get(roomIndex).getFreeTime()
+								.addDuration(office.getMWP().get(combinations.get(k).get(l)).getDuration()));
+						office.getMWP().get(combinations.get(k).get(l)).setDay(day);
+					}
+				}
+			}
+		}
 		if (office.getRWP().size() > 0) {
 			for (int i = 0; i < office.getMWP().size(); i++)
 				sum += office.getMWP().get(i).getDuration().getminute();
@@ -71,6 +103,36 @@ public class BackTracking {
 		day = 1;
 		time = office.getOfficeTimings().getOpening();
 
+		// ****************************
+
+		if (office.getRWOP().size() > 0) {
+			for (int i = 0; i < office.getMWOP().size(); i++)
+				sum += office.getMWOP().get(i).getDuration().getminute();
+
+			if (sum >= office.getOfficeTimings().getWorkingTime().getminute()) {
+				B_MCWOP(office, 0);
+
+				combinations1 = removeRepetitions(combinations1);
+
+				for (int k = 0; k < combinations1.size(); k++, roomIndex++) {
+					if (roomIndex >= office.getRWOP().size())
+						roomIndex = 0;
+					day++;
+					office.FreeAllRooms();
+
+					for (int l = 0; l < combinations1.get(k).size(); l++) {
+						office.getMWOP().get(combinations1.get(k).get(l)).setRoomAllocated(true);
+						office.getMWOP().get(combinations1.get(k).get(l)).setRoom(office.getRWOP().get(roomIndex));
+
+						office.getMWOP().get(combinations1.get(k).get(l))
+								.setTime(office.getRWOP().get(roomIndex).getFreeTime());
+						office.getRWOP().get(roomIndex).setFreeTime(office.getRWOP().get(roomIndex).getFreeTime()
+								.addDuration(office.getMWOP().get(combinations.get(k).get(l)).getDuration()));
+						office.getMWOP().get(combinations1.get(k).get(l)).setDay(day);
+					}
+				}
+			}
+		}
 		if (office.getRWOP().size() > 0) {
 			for (int i = 0; i < office.getMWOP().size(); i++)
 				sum += office.getMWOP().get(i).getDuration().getminute();
@@ -163,6 +225,31 @@ public class BackTracking {
 		this.combinations = combinations;
 		this.combinations1 = combinations1;
 
+	}
+
+	public ArrayList<ArrayList<Integer>> removeRepetitions(ArrayList<ArrayList<Integer>> combinations_) {
+		ArrayList<Integer> Vector = new ArrayList<Integer>();
+		for (int k = 0; k < combinations_.size(); k++) {
+			for (int l = 0; l < combinations_.get(k).size(); l++) {
+				boolean Bool = false;
+
+				for (int m = 0; m < Vector.size(); m++) {
+
+					// listA.containsAll(listB) && listB.containsAll(listA)
+
+					if (Vector.get(m) == combinations_.get(k).get(l))
+						Bool = true;
+				}
+
+				if (Bool) {
+					combinations_.remove(k);
+					k--;
+					break;
+				} else
+					Vector.add(combinations_.get(k).get(l));
+			}
+		}
+		return combinations_;
 	}
 
 	public BackTracking(Office office) {
