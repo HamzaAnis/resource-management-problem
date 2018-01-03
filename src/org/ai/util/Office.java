@@ -10,7 +10,7 @@ public class Office {
 	private int NORWOP; // number of rooms with projectors
 	ArrayList<Meeting> meetings;
 	ArrayList<Room> RWP; // roomsWithProjector
-	ArrayList<Room> RWOP; // roomsWithoutProjector
+	ArrayList<Room> RWOP; // roomsWithoutProjector		
 	ArrayList<Meeting> MWP; // meetings with projectors
 	ArrayList<Meeting> MWOP; // meetings without projectors
 
@@ -95,7 +95,7 @@ public class Office {
 		numberofMeetings = TakeIntInput("Enter the number of Meetings: ");
 	}
 
-	void FreeAllRooms() {
+	public void FreeAllRooms() {
 		for (int i = 0; i < RWP.size(); i++)
 			RWP.get(i).setFreeTime(officeTimings.getOpening());
 
