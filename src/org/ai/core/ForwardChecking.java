@@ -1,7 +1,8 @@
+package org.ai.core;
 import org.ai.util.Office;
 import org.ai.util.Time;
 
-public class BackJumping {
+public class ForwardChecking {
 	private Office office;
 	private int sum;
 
@@ -13,11 +14,11 @@ public class BackJumping {
 		this.office = office;
 	}
 
-	public BackJumping() {
+	public ForwardChecking() {
 		office = new Office();
 	}
 
-	public BackJumping(Office office) {
+	public ForwardChecking(Office office) {
 		super();
 		this.office = office;
 	}
@@ -66,10 +67,6 @@ public class BackJumping {
 		} else {
 			System.out.println("Your office don't have any room with projector!\\n\\n");
 		}
-
-		// *******************************
-		// * Meetings without projectors *
-		// *******************************
 
 		sum = 0;
 		roomIndex = 0;
