@@ -1,4 +1,5 @@
 package org.ai.core;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -194,6 +195,37 @@ public class Office {
 				System.out.println("       Room Number: " + MWOP.get(i).getRoom().getRoomNo());
 			}
 		}
+	}
+
+	private int partition(ArrayList<Meeting> arr, int left, int right) {
+		int i = left, j = right;
+		Meeting tmp;
+		Meeting pivot = arr.get((left + right) / 2);
+
+		while (i <= j) {
+			while (arr.get(i).getDuration().getminute() < pivot.getDuration().getminute())
+				i++;
+			while (arr.get(j).getDuration().getminute() > pivot.getDuration().getminute())
+				j--;
+			if (i <= j) {
+				/* swap(arr[i], arr[j]); */
+				tmp = arr.get(i);
+				arr.set(i, arr.get(j));
+				arr.set(j, tmp);
+				i++;
+				j--;
+			}
+		}
+
+		return i;
+	}
+
+	private void quickSort(ArrayList<Meeting> arr, int left, int right) {
+		int index = partition(arr, left, right);
+		if (left < index - 1)
+			quickSort(arr, left, index - 1);
+		if (index < right)
+			quickSort(arr, index, right);
 	}
 
 	public void setOfficeTimings(OfficeTimings officeTimings) {
