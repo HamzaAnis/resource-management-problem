@@ -1,11 +1,7 @@
-package org.ai.core;
+package org.ai.util;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import org.ai.util.Meeting;
-import org.ai.util.OfficeTimings;
-import org.ai.util.Room;
 
 public class Office {
 	private OfficeTimings officeTimings;
@@ -64,6 +60,7 @@ public class Office {
 				System.out.println("\t\tPlease use numbers only");
 			}
 		}
+		sc.close();
 		return integer;
 	}
 
@@ -226,6 +223,10 @@ public class Office {
 			quickSort(arr, left, index - 1);
 		if (index < right)
 			quickSort(arr, index, right);
+	}
+
+	public void sortMeetings() {
+		quickSort(meetings, 0, numberofMeetings - 1);
 	}
 
 	public void setOfficeTimings(OfficeTimings officeTimings) {
