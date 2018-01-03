@@ -1,31 +1,12 @@
 import org.ai.util.Office;
 import org.ai.util.Time;
 
-public class BackJumping {
-	private Office office;
-	private int sum;
+public class BackTracking {
+	Office office;
 
-	public Office getOffice() {
-		return office;
-	}
-
-	public void setOffice(Office office) {
-		this.office = office;
-	}
-
-	public BackJumping() {
-		office = new Office();
-	}
-
-	public BackJumping(Office office) {
-		super();
-		this.office = office;
-	}
-
-	// this is not implemented from runable
 	public void run() {
 		office.seperateMeetings();
-		sum = 0;
+		int sum = 0;
 		int roomIndex = 0;
 		int day = 1;
 		Time time = office.getOfficeTimings().getOpening();
@@ -111,6 +92,18 @@ public class BackJumping {
 		} else {
 			System.out.println("Your office don't have any simple!\\n\\n");
 		}
+	}
 
+	public BackTracking(Office office) {
+		super();
+		this.office = office;
+	}
+
+	public Office getOffice() {
+		return office;
+	}
+
+	public void setOffice(Office office) {
+		this.office = office;
 	}
 }
