@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "scheduling", "scheduling\scheduling.vcxproj", "{1CCB8276-80C4-43F0-AE65-A66B289779FD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1CCB8276-80C4-43F0-AE65-A66B289779FD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1CCB8276-80C4-43F0-AE65-A66B289779FD}.Debug|Win32.Build.0 = Debug|Win32
+		{1CCB8276-80C4-43F0-AE65-A66B289779FD}.Release|Win32.ActiveCfg = Release|Win32
+		{1CCB8276-80C4-43F0-AE65-A66B289779FD}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
